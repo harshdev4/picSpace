@@ -89,7 +89,21 @@ exports.isLoggedIn = async (req, res) => {
 
 exports.getUsers = async (req, res) => {
     try {
-        const users = await userModel.find().select('username fullname profilePic');
+        const allUsers = await userModel.find().select('username fullname profilePic').sort({ createdAt: -1 });
+
+        let loggedInUser;
+        const otherUsers = [];
+
+        for (const user of allUsers) {
+            if (user._id.equals(req.user.id)) {
+                loggedInUser = user;
+            } else {
+                otherUsers.push(user);
+            }
+        }
+
+        const users = loggedInUser ? [loggedInUser, ...otherUsers] : otherUsers;
+
         res.status(200).json({ message: 'Users fetched successfully', users });
     } catch (error) {
         console.error(error);
@@ -176,7 +190,7 @@ exports.follow = async (req, res) => {
                 user_being_followed.followers.push(req.user.id);
                 user.following.push(user_being_followed._id);
             }
-            else{
+            else {
                 user_being_followed.followers = user_being_followed.followers.filter(userId => !userId.equals(user._id));
                 user.following = user.following.filter(userId => !userId.equals(user_being_followed._id));
             }

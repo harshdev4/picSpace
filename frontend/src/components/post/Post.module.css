@@ -13,9 +13,13 @@
     cursor: pointer;
 }
 
+.navigateLink{
+    text-decoration: none;
+    color: inherit;
+}
+
 .postTopContainer{
-    width: 100%;
-    display: flex;
+    display: inline-flex;
     gap: 20px;
     padding: 8px;
 }

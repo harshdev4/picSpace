@@ -5,6 +5,7 @@ import PopUp from '../menu-popup/PopUp';
 import { useRef, useState } from 'react';
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import axiosInstance from '../../api/axiosInstance.js';
+import {Link} from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
@@ -105,7 +106,7 @@ const Post = ({ postId, user, caption: captionProp, owner, image, isLiked, like 
         <div className={styles.post}>
             {isPopUp && <PopUp togglePopUp={togglePopUp} postId={postId} setIsPopUp={setIsPopUp} setIsCaptionEdit={setIsCaptionEdit} caption={caption}></PopUp>}
             {owner._id === currentUser.id && <BsThreeDots className={styles.menuDots} onClick={togglePopUp} />}
-            <div className={styles.postTopContainer}>
+            <Link to={`/profile/${user.username}`} className={styles.navigateLink}><div className={styles.postTopContainer}>
                 {user.profilePic ?
                     <img src={user.profilePic} alt="profile" className={styles.profileImage} /> :
                     <HiOutlineUserCircle className={`${styles.profileImage} ${styles.profileIcon}`} />
@@ -114,7 +115,7 @@ const Post = ({ postId, user, caption: captionProp, owner, image, isLiked, like 
                     <h3 className={styles.username}>{user.username}</h3>
                     <h4 className={styles.fullname}>{user.fullname}</h4>
                 </div>
-            </div>
+            </div></Link>
             <img src={image} alt="postImage" className={styles.postImage} />
             <div className={styles.postBottomContainer}>
                 <div className={styles.likeContainer}>{isLiked ? <FaHeart className={`${styles.likeIcon} ${isLiked && styles.likeColor}`} onClick={() => mutation.mutate({ postId, userId: currentUser.id })}/> : <FaRegHeart className={styles.likeIcon} onClick={() => mutation.mutate({ postId, userId: currentUser.id })} />} <span className={styles.likeCount}>{like} likes</span></div>
