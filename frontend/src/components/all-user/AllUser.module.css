@@ -1,0 +1,32 @@
+.userContainer{
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 0 2px var(--postShadow);
+    padding: 8px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #8888884d transparent;
+}
+
+.userContainer::-webkit-scrollbar {
+  height: 8px;
+}
+
+.userContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.userContainer::-webkit-scrollbar-thumb {
+  background-color: #8888884d transparent;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background-color 0.3s ease;
+}
+
+.userContainer::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}

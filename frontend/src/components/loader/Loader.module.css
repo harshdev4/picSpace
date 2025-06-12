@@ -1,0 +1,26 @@
+.loading{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: var(--loaderBg);
+}
+
+.loader{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    transform: translate(-50%, -45%);
+    border-radius: 50%;
+    border-top: 3px solid var(--text);
+    width: 5rem;
+    height: 5rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

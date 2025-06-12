@@ -1,0 +1,74 @@
+:root{
+  --primaryColor: #fff;
+  --secondaryColor: #c7c7c7;
+  --inputBg: rgb(218, 218, 218);;
+  --navShadow: rgba(95, 95, 95, 0.597);
+  --topShadow: rgba(95, 95, 95, 0.459);
+  --postShadow: rgba(95, 95, 95, 0.281);
+  --activeLink: #000;
+  --notActiveLink: #4f4f4f;
+  --logoFilter: none;
+  --text: #000;
+  --inputSearchIcon: rgba(0, 0, 0, 0.600);
+  --menuContainerBg: #00000075; 
+  --menuBg: #fff;
+  --light: #000000b6;
+  --userBorder: #2b2a2a46;
+  --loaderBg: #0000008c;
+  --editImageBg: #E6E6E6;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body.dark-theme {
+  --primaryColor: #000000;
+  --secondaryColor: #444444;
+  --inputBg: #444444;
+  --navShadow: rgba(207, 207, 207, 0.597);
+  --topShadow: rgba(196, 196, 196, 0.459);
+  --postShadow: #c4c4c421;
+  --notActiveLink: #8f8f8fd7;
+  --activeLink: #ffffff;
+  --logoFilter: invert(1);
+  --text: #fff;
+  --inputSearchIcon: rgba(255, 255, 255, 0.6);
+  --menuContainerBg: #2929293b;
+  --menuBg: #444444;
+  --light: #ffffffb6;
+  --userBorder: #ffffffb6;
+  --loaderBg: #1e1e1eb6;
+  --editImageBg: #262626;
+}
+
+.mainContainer{
+  padding-left: 180px;
+}
+
+.authPadding{
+  padding-left: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.overflow-hidden{
+  overflow: hidden;
+}
+
+
+@media (max-width: 599px){
+  .mainContainer{
+    padding-left: 0;
+    padding-top: 44px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (min-width: 599px) and (max-width: 800px){
+    .mainContainer{
+        padding-left: 170px;
+    }
+}

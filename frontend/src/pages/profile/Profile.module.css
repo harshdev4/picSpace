@@ -1,0 +1,190 @@
+.profileContainer{
+    background-color: var(--primaryColor);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+.profile{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    box-shadow: 0 0 5px var(--postShadow);
+}
+
+.statsSectionSM{
+    display: none !important;
+}
+
+.loading{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.profileInfo{
+    width: 70%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 40px;
+    margin-bottom: 15px;
+}
+
+.profilePic{
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.underImageFullname{
+    display: none;
+}
+
+.infoSectionContainer{
+     width: 100%;
+}
+
+.infoSection{
+    margin-bottom: 22px;
+    width: 100%;
+    display: flex;
+    column-gap: 20px;
+    row-gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.profileUsername{
+    font-weight: 300;
+    min-width: 160px;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+
+
+.profileSectionBtn{
+    margin-right: 20px;
+    background-color: var(--light);
+    color: var(--primaryColor);
+    border: 0;
+    border-radius: 9px;
+    padding: 8px 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.profileSectionBtn:hover{
+    background-color: var(--text);
+}
+
+.postCount, .followerCount, .followingCount{
+    font-size: 1rem;
+}
+
+#editBtn, #logoutBtn{
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.followPostSpan{
+    font-weight: 500;
+}
+
+.fullnameSection{
+    row-gap: 0;
+    margin-bottom: 2px;
+}
+
+.profileFullname{
+    font-size: 1rem;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.profileBio{
+    font-size: 0.9rem;
+    margin-top: 3px;
+}
+
+@media (max-width: 270px){
+    .profileInfo{
+        column-gap: 5px;
+    }
+
+    .profileSectionBtn{
+        margin-right: 3px;
+    }
+}
+
+@media (max-width:365px) {
+    html{
+        font-size: 10px;
+    }
+
+    .profileSectionBtn{
+        margin-bottom: 8px;
+    }
+
+    .profileInfo{
+        width: 98%;
+    }
+}
+
+@media (max-width:599px) {
+    .profileContainer{
+        min-height: calc(100vh - 80px);
+    }
+
+    .fullnameSection{
+        display: none;
+    }
+
+    .underImageFullname{
+        display: block;
+        margin-left: 10px;
+    }
+
+    .statsSection{
+        display: none;
+    }
+
+    .profile{
+        padding-bottom: 0;
+        box-shadow: unset;
+        padding-left: 15px;
+    }
+
+    .profilePic{
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .statsSectionSM{
+        width: 80%;
+        margin: 0 auto;
+        display: flex !important;
+        justify-content: space-around;
+        padding-top: 30px;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 0.5px solid var(--secondaryColor);
+    }
+}
+
+@media (min-width:365px) and (max-width: 1090px) {
+    html{
+        font-size: 13px;
+    }
+
+    .profileInfo{
+        width: 98%;
+    }
+
+}

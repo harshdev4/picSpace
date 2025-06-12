@@ -1,0 +1,114 @@
+.editContainer{
+    min-height: 100vh;
+    background: var(--primaryColor);
+    padding: 20px;
+}
+
+.editBox{
+    width: 50%;
+    margin: 0 auto;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.heading{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text);
+    width: 50%;
+    margin: 0 auto 20px auto;
+}
+
+.profileImage{
+    width: 8.5rem;
+    height: 8.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.profileIcon{
+    border: 0;
+}
+
+.imageUpdateSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    border-radius: 8px;
+    justify-content: center;
+    padding: 14px;
+    background-color: var(--editImageBg);
+}
+
+.divider{
+    width: 100%;
+    height: 1px;
+    background: var(--postShadow);
+}
+
+.textUpdateSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+}
+
+.input{
+    width: 100%;
+    padding: 10px 7px;
+    font-size: 1rem;
+    margin: 14px 0 30px 0;
+    background-color: transparent;
+    outline: 0;
+    border: 1px solid var(--secondaryColor);
+    border-radius: 8px;
+    color: var(--text);
+}
+
+.input:focus{
+    border: 1px solid var(--text);
+}
+
+.submitBtn{
+    background-color: #007BFF ;
+    color: white;
+    border-radius: 9px;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.submitBtn:hover{
+    background-color: rgb(20, 129, 165);
+}
+
+#profilePic{
+    width: 212px;
+}
+
+@media (max-width: 599px){
+    .editBox{
+        width: 100%;
+    }
+
+    .heading{
+        width: 90%;
+    }
+
+    .imageUpdateSection{
+        flex-direction: column;
+    }
+
+    #profilePic{
+        margin: 10px 0;
+    }
+    .imageUpdateSection, .textUpdateSection, #heading{
+        width: 90%;
+    }
+}

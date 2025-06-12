@@ -1,0 +1,4 @@
+.feedContainer{
+    background-color: var(--primaryColor);
+    color: var(--text);
+}

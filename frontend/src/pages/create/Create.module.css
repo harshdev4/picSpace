@@ -1,0 +1,134 @@
+.createContainer{
+    width: 100%;
+    background: var(--primaryColor);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.createBox{
+    width: 65%;
+    height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    color: var(--text);
+}
+
+.dragBox{
+    width: 100%;
+    height: inherit;
+    border: 2px dashed var(--secondaryColor);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.highlight{
+    background-color: var(--secondaryColor);
+    border: 2px dashed var(--activeLink);
+}
+
+.previewImage{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.dropBoxTexContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.mdDragText{
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--notActiveLink);
+}
+
+.smDragText{
+    font-size: 0.7rem;
+    color: var(--notActiveLink);
+}
+
+.imageIcon{
+    font-size: 2.5rem;
+}
+
+.leftOrBottomContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.captionContainer{
+    width: 100%;
+}
+
+.captionTitle{
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--light);
+}
+
+.captionInput{
+    width: 100%;
+    height: 200px;
+    resize: none;
+    border-radius: 8px;
+    padding: 10px;
+    background: transparent;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.postBtn{
+    padding: 8px 14px;
+    font-size: 1rem;
+    border: 0;
+    background: var(--text);
+    color: var(--primaryColor);
+}
+
+
+
+
+@media (max-width: 799px){
+    .createContainer{
+        align-items: unset;
+        padding-top: 20px;
+    }
+
+    .createBox{
+        width: 80%;
+        grid-template-columns: 1fr;
+        height: 100%;
+    }
+
+    .dragBox{
+        height: 250px;
+    }
+
+    .leftOrBottomContainer{
+        gap: 20px;
+    }
+}
+
+@media (min-width: 799px) and (max-width: 992px){
+    .createBox{
+       width: 90%; 
+    }
+}
+
+@media (max-width: 599px){
+        .dragBox{
+        height: 300px;
+    }
+}

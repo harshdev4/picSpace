@@ -1,0 +1,146 @@
+.content{
+    width: 350px;
+    margin: auto;
+    border: 1px solid rgb(201, 199, 199);
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.logoTitle{
+    width: 48%;
+    margin: 22px 0;
+}
+
+
+.loading{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* background-color: rgba(0, 0, 0, 0.322); */
+    z-index: 999;
+}
+
+.loader{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border-top: 3px solid black;
+    width: 5rem;
+    height: 5rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#signupMsg{
+    color: rgb(99, 98, 98);
+    text-align: center;
+    font-weight: 500;
+    max-width: 300px;
+    margin-bottom: 10px;
+}
+
+#errorMsg{
+    text-align: center;
+    color: red;
+    font-weight: 500;
+}
+
+.signupForm{
+    width: 300px;
+    padding: 10px;
+}
+
+.signupForm input{
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+}
+
+.passwordBlock{
+    position: relative;
+}
+
+.passwordBlock > input{
+    padding-right: 30px;
+}
+
+.eye{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.signupForm > input[type="email"]:focus, .signupForm > input[type="text"]:focus, .passwordInput:focus{
+    outline: 1px solid rgb(201, 199, 199);
+}
+
+.signupForm > input[type="email"], .signupForm > input[type="text"], .passwordInput{
+    border-radius: 3px;
+    border: 1px solid rgb(201, 199, 199);
+    margin-bottom: 4px;
+}
+
+.signupForm > input[type="submit"]{
+    border: 0;
+    background-color: #4cb5f9;
+    color: white;
+    border-radius: 12px;
+    margin: 10px 0;
+}
+
+#accountQuery{
+    font-size: 14px;
+    width: 350px;
+    margin: 20px auto;
+    border: 1px solid rgb(201, 199, 199);
+    padding: 23px 10px;
+    text-align: center;
+}
+
+#accountQuery > #link{
+    color: #4cb5f9;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#getTheApp{
+    text-align: center;
+    font-weight: 300;
+}
+
+.storeImageContainer{
+    width: 350px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.storeImageContainer > a{
+    display: contents;
+}
+
+.storeImageContainer > a > img{
+    width: 35%;
+}
+
+@media (max-width: 599px){
+    .content, #accountQuery{
+        border: 0;
+    }
+
+    #getTheApp, .storeImageContainer{
+        display: none;
+    }
+}

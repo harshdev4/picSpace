@@ -1,0 +1,50 @@
+.deleteMenuList{
+    width: 300px;
+    height: 180px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--menuBg);
+    border-radius: 8px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.contextContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.menuContext{
+    font-size: 1.2rem;
+}
+
+.menuAlert{
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.buttonContainer{
+    width: 100%;
+}
+
+.menuButton{
+    cursor: pointer;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(124, 124, 124, 0.5);
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuButton:first-of-type{
+    color: red;
+}

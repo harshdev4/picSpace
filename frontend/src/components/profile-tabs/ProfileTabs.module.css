@@ -1,0 +1,26 @@
+.tabs{
+    width: 50%;    
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab{
+    font-size: 1.7rem;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.active{
+    border-bottom: 2px solid;
+}
+
+@media (max-width: 599px){
+    .tabs{
+        width: 70%;
+    }
+
+    .tab{
+        font-size: 1.7rem;
+    }
+}
