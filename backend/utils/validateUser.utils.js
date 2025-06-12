@@ -6,7 +6,7 @@ const validateUser = (email, password, fullName) => {
   }
 
   if (!validator.isStrongPassword(password, { minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1})) {
-    throw new Error("Password must be at least 8 characters long and alphanumeric.");
+    throw new Error("Password must be at least 8 characters long, special and alphanumeric.");
   }
 
   if (!/^[A-Za-z\s]+$/.test(fullName)) {

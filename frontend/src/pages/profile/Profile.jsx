@@ -60,7 +60,13 @@ const Profile = () => {
     mutationFn: handleLogout,
     onSuccess: () => {
       toast.success("Logged out");
-      queryClient.setQueryData(["user"], null);
+      queryClient.removeQueries({ queryKey: ['user'], exact: true });
+      queryClient.removeQueries({ queryKey: ['AllUsers'], exact: true });
+      queryClient.removeQueries({ queryKey: ['Posts'], exact: true });
+      queryClient.removeQueries({
+        predicate: query =>
+          query.queryKey[0] === 'profile'
+      });
       navigate("/login");
     },
     onError: (error) => {
@@ -77,7 +83,7 @@ const Profile = () => {
         if (!oldData) return oldData;
         return {
           ...oldData,
-          followers: oldData.followers.includes(loggedInUser.id) ? oldData.followers.filter(userId=> userId !== loggedInUser.id)  : [...oldData.followers, loggedInUser.id]
+          followers: oldData.followers.includes(loggedInUser.id) ? oldData.followers.filter(userId => userId !== loggedInUser.id) : [...oldData.followers, loggedInUser.id]
         }
       });
       return { previousData };
