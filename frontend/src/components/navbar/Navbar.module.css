@@ -88,6 +88,7 @@
 }
 
 @media (max-width: 599px) {
+
     .themeContainer {
         display: none;
     }
