@@ -38,7 +38,6 @@ const SinglePost = () => {
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['singlePost', postId],
         queryFn: () => getPost(postId),
-        staleTime: 2 * 60 * 1000,
         retry: false
     });
 
