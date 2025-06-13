@@ -71,6 +71,17 @@ const SinglePost = () => {
             await queryClient.cancelQueries({ queryKey: ['Posts'] });
             const previousPosts = queryClient.getQueryData(['Posts']);
 
+            await queryClient.cancelQueries({ queryKey: ['singlePost', postId] });
+            const previousSinglePost = queryClient.getQueryData(['singlePost', postId]);
+
+            queryClient.setQueryData(['singlePost', postId], (oldData) => {
+                if (!oldData) return oldData;
+                return {
+                    ...oldData,
+                    likes: oldData.likes.includes(userId) ? oldData.likes.filter(user => user !== userId) : [...oldData.likes, userId]
+                }
+            })
+            
             queryClient.setQueryData(['Posts'], (oldData) => {
                 if (!oldData) return oldData;
                 return {
@@ -85,12 +96,14 @@ const SinglePost = () => {
                     )
                 }
             })
-            return { previousPosts };
+
+            return { previousPosts, previousSinglePost };
         },
 
         onError: (error, context) => {
             toast.error(error.message);
             queryClient.setQueryData(['Posts'], context.prevPosts);
+            queryClient.setQueryData(['singlePost', postId], context.previousSinglePost);
         }
     })
 
@@ -99,6 +112,9 @@ const SinglePost = () => {
         onMutate: async ({ postId, userId, updatedCaption }) => {
             await queryClient.cancelQueries({ queryKey: ['Posts'] });
             const previousPosts = queryClient.getQueryData(['Posts']);
+
+            await queryClient.cancelQueries({ queryKey: ['singlePost', postId] });
+            const previousSinglePost = queryClient.getQueryData(['singlePost', postId]);
 
             queryClient.setQueryData(['Posts'], (oldData) => {
                 if (!oldData) return oldData;
@@ -114,14 +130,24 @@ const SinglePost = () => {
                     )
                 }
             })
+
+            queryClient.setQueryData(['singlePost', postId], (oldData) => {
+                if (!oldData) return oldData;
+                return {
+                    ...oldData,
+                    caption: updatedCaption
+                }
+            })
+
             setIsCaptionEdit(false);
-            return { previousPosts };
+            return { previousSinglePost, previousPosts };
         },
         onSuccess: (data) => {
             toast.success(data.message);
         },
         onError: (error, context) => {
             queryClient.setQueryData(['Posts'], context.previousPosts);
+            queryClient.setQueryData(['singlePost', postId], context.previousSinglePost);
             toast.error(error.message);
         }
     })

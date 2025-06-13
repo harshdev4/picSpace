@@ -8,6 +8,8 @@ const ProfileTabPosts = ({ tab, posts }) => {
  
     const likeContainer = useRef();
 
+    posts.sort((a,b)=>  new Date(b.createdAt) - new Date(a.createdAt))
+
     function showLike(e) {
         const parentNode = e.currentTarget;
         const likeTag = parentNode.querySelector('.likeContainer');

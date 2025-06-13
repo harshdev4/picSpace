@@ -67,6 +67,9 @@ const Post = ({ postId, user, caption: captionProp, owner, image, isLiked, like 
         onError: (error, context) => {
             toast.error(error.message);
             queryClient.setQueryData(['Posts'], context.prevPosts);
+        },
+        onSettled: ()=>{
+            queryClient.invalidateQueries(['singlePost', postId])
         }
     })
 
@@ -99,6 +102,9 @@ const Post = ({ postId, user, caption: captionProp, owner, image, isLiked, like 
         onError: (error, context) => {
             queryClient.setQueryData(['Posts'], context.previousPosts);
             toast.error(error.message);
+        },
+        onSettled: ()=>{
+            queryClient.invalidateQueries(['singlePost', postId])
         }
     })
 
