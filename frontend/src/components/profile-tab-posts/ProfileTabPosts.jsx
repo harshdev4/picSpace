@@ -5,7 +5,7 @@ import { FaHeart } from 'react-icons/fa';
 import { GiEmptyHourglass } from 'react-icons/gi';
 
 const ProfileTabPosts = ({ tab, posts }) => {
-
+ 
     const likeContainer = useRef();
 
     function showLike(e) {
