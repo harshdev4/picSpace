@@ -11,12 +11,7 @@
 
 .menuList{
     width: 250px;
-    height: 130px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    height: 200px;
     background-color: var(--menuBg);
     border-radius: 8px;
     position: absolute;
@@ -26,5 +21,24 @@
 }
 
 .menuButton{
-    cursor: pointer;
+   cursor: pointer;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(124, 124, 124, 0.5);
+    width: 100%;
+    height: calc(100%/3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuButton:hover{
+    background-color: var(--menuBgHover);
+}
+
+.menuButton:first-child{
+    border-top: 0;
+}
+
+.menuButton:last-child{
+    color: #ed4956;
 }

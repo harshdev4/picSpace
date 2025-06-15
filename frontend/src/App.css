@@ -12,6 +12,7 @@
   --inputSearchIcon: rgba(0, 0, 0, 0.600);
   --menuContainerBg: #00000075; 
   --menuBg: #fff;
+  --menuBgHover: #dcdcdc;
   --light: #000000b6;
   --userBorder: #2b2a2a46;
   --loaderBg: #0000008c;
@@ -39,6 +40,7 @@ body.dark-theme {
   --inputSearchIcon: rgba(255, 255, 255, 0.6);
   --menuContainerBg: #2929293b;
   --menuBg: #444444;
+  --menuBgHover: #3a3a3a;
   --light: #ffffffb6;
   --userBorder: #ffffffb6;
   --loaderBg: #1e1e1eb6;
