@@ -7,7 +7,7 @@ import { HiOutlineUserCircle } from "react-icons/hi2";
 import axiosInstance from '../../api/axiosInstance.js';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Loader from '../loader/Loader.jsx';
 
 const SinglePost = () => {
@@ -23,6 +23,7 @@ const SinglePost = () => {
     const caption = useRef();
     const queryClient = useQueryClient();
     const [isCaptionEdit, setIsCaptionEdit] = useState(false);
+    const navigate = useNavigate();
 
     const currentUser = queryClient.getQueryData(['user']);
 
@@ -67,6 +68,9 @@ const SinglePost = () => {
     const mutation = useMutation({
         mutationFn: handleLikeClick,
         onMutate: async ({ postId, userId }) => {
+            if (!userId) {
+                return;
+            }
             await queryClient.cancelQueries({ queryKey: ['Posts'] });
             const previousPosts = queryClient.getQueryData(['Posts']);
 
@@ -100,6 +104,9 @@ const SinglePost = () => {
         },
 
         onError: (error, context) => {
+            if (error.message === 'Unauthorized - No Token Provided') {
+                navigate('/login');
+            }
             toast.error(error.message);
             queryClient.setQueryData(['Posts'], context.prevPosts);
             queryClient.setQueryData(['singlePost', postId], context.previousSinglePost);
