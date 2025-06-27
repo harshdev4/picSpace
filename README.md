@@ -3,7 +3,7 @@
 PicSpace is a platform, allowing users to sign up, log in, upload photos, like uploaded photos, view other users' profiles, and edit their own profiles. It is built with Vite + React.js for the frontend, Node.js with Express.js for the backend, Multer & cloudinary for photo upload handling, and MongoDB for the database.
 
 ## Live Link
-[Visit PicSpace](https://picspace-v546.onrender.com/)
+[Visit PicSpace](https://picspace-v546.onrender.com/)  
 **Note:** Site will take few seconds before loading as it is deployed on render for free
 
 ## Table of Contents
