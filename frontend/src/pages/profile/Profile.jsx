@@ -9,6 +9,8 @@ import Loader from "../../components/loader/Loader.jsx";
 import { FaUserCircle } from "react-icons/fa";
 import ProfileTabs from "../../components/profile-tabs/ProfileTabs.jsx";
 import ProfileTabPosts from "../../components/profile-tab-posts/ProfileTabPosts.jsx";
+import { Helmet } from "react-helmet";
+import { useFollowMutation } from "../../hooks/useFollowMutation.jsx";
 
 
 const Profile = () => {
@@ -20,14 +22,6 @@ const Profile = () => {
 
   const [tab, setTab] = useState("Posts");
 
-  const handleFollow = async (username) => {
-    try {
-      const res = await axiosInstance.patch(`/user/follow/${username}`);
-      return res.data;
-    } catch (error) {
-      throw new Error(error.response.data.error);
-    }
-  };
 
   const fetchUser = async (username) => {
     try {
@@ -74,33 +68,14 @@ const Profile = () => {
     }
   });
 
-  const followMutation = useMutation({
-    mutationFn: handleFollow,
-    onMutate: async () => {
-      await queryClient.cancelQueries(["profile", username]);
-      const previousData = queryClient.getQueryData(["profile", username]);
-      queryClient.setQueryData(["profile", username], (oldData) => {
-        if (!oldData) return oldData;
-        return {
-          ...oldData,
-          followers: oldData.followers.includes(loggedInUser.id) ? oldData.followers.filter(userId => userId !== loggedInUser.id) : [...oldData.followers, loggedInUser.id]
-        }
-      });
-      return { previousData };
-    },
-    onError: (error, context) => {
-      queryClient.setQueryData(["profile", username], context.previousData);
-      toast.error(error.message);
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries(["profile", username]);
-    },
-  });
 
-
+const {mutate: follow} = useFollowMutation(username, getUser.data?._id)
 
   return (
     <div className={styles.profileContainer}>
+      <Helmet>
+        <title>{`${getUser.data?.username} | PicSpace`}</title>
+      </Helmet>
       {getUser.isLoading && (
         <Loader />
       )}
@@ -112,7 +87,7 @@ const Profile = () => {
                 {user.profilePic ? <img src={user.profilePic} alt="profilePic" className={styles.profilePic} /> :
                   <FaUserCircle className={`${styles.profilePic} ${styles.profileIcon}`} />
                 }
-              </div>
+              </div> 
 
               <div className={styles.infoSectionContainer}>
                 <div className={styles.infoSection}>
@@ -123,7 +98,7 @@ const Profile = () => {
                       <button className={styles.profileSectionBtn} id={styles.logoutBtn} onClick={() => logoutMutation.mutate()}>Logout</button>
                     </div>
                   ) : (
-                    <button className={styles.profileSectionBtn} onClick={() => followMutation.mutate(username)}>{getUser.data?.followers.includes(loggedInUser.id) ? "Following" : "Follow"}</button>
+                    <button className={styles.profileSectionBtn} onClick={() => follow()}>{loggedInUser?.following.includes(getUser.data?._id) ? "Following" : "Follow"}</button>
                   )}
                 </div>
 

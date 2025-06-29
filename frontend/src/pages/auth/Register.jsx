@@ -7,6 +7,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Loader from '../../components/loader/Loader';
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
     const passwordRef = useRef(null);
@@ -69,8 +70,11 @@ const Register = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Sign-up | PicSpace</title>
+            </Helmet>
             {mutation.isPending && (
-                <Loader/>
+                <Loader />
             )}
             <div className={styles.content}>
                 <img
@@ -85,7 +89,7 @@ const Register = () => {
                     action=""
                     method="post"
                     className={styles.signupForm}
-                    onSubmit={(e)=> {
+                    onSubmit={(e) => {
                         e.preventDefault();
                         console.log("clicked");
                         mutation.mutate(formData);

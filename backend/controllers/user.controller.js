@@ -34,7 +34,8 @@ exports.register = async (req, res) => {
             username: newUser.username,
             fullname: newUser.fullname,
             profilePic: newUser.profilePic,
-            bio: newUser.profileBio
+            bio: newUser.profileBio,
+            following: newUser.following
         }
         const token = jwt.sign({ id: newUser._id }, SECRET_KEY, { expiresIn: '7d' });
         res.cookie('access_token', token, { maxAge: 7 * 24 * 60 * 60 * 1000, httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict' });
@@ -63,7 +64,8 @@ exports.login = async (req, res) => {
                     username: existingUser.username,
                     fullname: existingUser.fullname,
                     profilePic: existingUser.profilePic,
-                    bio: existingUser.profileBio
+                    bio: existingUser.profileBio,
+                    following: newUser.following
                 }
                 const token = jwt.sign({ id: existingUser._id }, SECRET_KEY, { expiresIn: '7d' });
                 res.cookie('access_token', token, { maxAge: 7 * 24 * 60 * 60 * 1000, httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict' });

@@ -2,10 +2,11 @@ import { useState } from 'react';
 import DeletePopUp from './DeletePopUp';
 import styles from './PopUp.module.css';
 import toast from 'react-hot-toast';
+import { useFollowMutation } from '../../hooks/useFollowMutation';
+import { useQueryClient } from '@tanstack/react-query';
 
-const PopUp = ({ togglePopUp, setIsPopUp, postId, setIsCaptionEdit, caption }) => {
+const PopUp = ({ owner, togglePopUp, setIsPopUp, postId, setIsCaptionEdit, caption }) => {
     const [isDeletePopUp, setIsDeletePopUp] = useState(false);
-
     const openEditBox = () => {
         togglePopUp();
         setIsCaptionEdit(true);
@@ -34,12 +35,20 @@ const PopUp = ({ togglePopUp, setIsPopUp, postId, setIsCaptionEdit, caption }) =
             .finally(togglePopUp());
     };
 
+    const queryClient = useQueryClient();
+    
+    const currentUser = queryClient.getQueryData(['user']);
+    
+
+    const {mutate} = useFollowMutation(owner.username, owner._id);
+
     return (
         <div className={styles.menuContainer} id='menuContainer' onClick={handleClose}>
             {!isDeletePopUp && <div className={styles.menuList}>
-                <span className={styles.menuButton} onClick={openEditBox}>Edit caption</span>
+                {owner._id !== currentUser.id && <span className={`${styles.menuButton} ${currentUser.following.includes(owner._id) && styles.redColor}`} onClick={(()=> mutate())}>{currentUser.following.includes(owner._id) ? "Unfollow" : "Follow"}</span>}
+                {owner._id === currentUser.id && <span className={styles.menuButton} onClick={openEditBox}>Edit caption</span>}
                 <span className={styles.menuButton} onClick={()=>handleCopy(postId)}>Copy url</span>
-                <span className={styles.menuButton} onClick={toggleDeleteAlert}>Delete post</span>
+                {owner._id === currentUser.id && <span className={`${styles.menuButton} ${styles.redColor}`} onClick={toggleDeleteAlert}>Delete post</span>}
             </div>}
             {isDeletePopUp && <DeletePopUp postId={postId} closeFn={toggleDeleteAlert}></DeletePopUp>}
         </div>

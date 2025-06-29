@@ -9,6 +9,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import Loader from '../loader/Loader.jsx';
+import {Helmet} from 'react-helmet';
 
 const SinglePost = () => {
 
@@ -170,6 +171,9 @@ const SinglePost = () => {
 
     return (
         <div className={styles.postContainer}>
+            <Helmet>
+                <title>{captionText} | PicSpace</title>
+            </Helmet>
             <div className={styles.post}>
                 {isLoading ? <Loader /> : isError ? <h1 className={styles.error}>{error.message}</h1> :
                     <>

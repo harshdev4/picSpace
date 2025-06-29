@@ -5,6 +5,7 @@ import axiosInstance from '../../api/axiosInstance.js';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import Loader from '../../components/loader/Loader.jsx';
+import { Helmet } from 'react-helmet';
 
 const Create = () => {
   const inputFileRef = useRef();
@@ -55,7 +56,7 @@ const Create = () => {
     }
   }
 
-  const handlePost = async ({file, caption}) =>{
+  const handlePost = async ({ file, caption }) => {
     if (!file) {
       throw new Error("Image is required");
     }
@@ -67,14 +68,14 @@ const Create = () => {
       return res.data;
     } catch (error) {
       console.log("sfsfs");
-      
+
       throw new Error(error.response?.data?.error || "Something went wrong");
     }
   }
 
   const mutation = useMutation({
     mutationFn: handlePost,
-    onSuccess: () =>{
+    onSuccess: () => {
       toast.success('Post uploaded');
       setPreviewImage(undefined);
       captionRef.current.value = '';
@@ -89,9 +90,12 @@ const Create = () => {
 
   return (
     <div className={styles.createContainer}>
-      {mutation.isPending && <Loader/>}
+      <Helmet>
+        <title>New Post | PicSpace</title>
+      </Helmet>
+      {mutation.isPending && <Loader />}
       <div className={styles.createBox}>
-        <input ref={inputFileRef} type="file" accept='image/*' onChange={handleFileInput} hidden required/>
+        <input ref={inputFileRef} type="file" accept='image/*' onChange={handleFileInput} hidden required />
         <div className={`${styles.dragBox} ${insideDrop && styles.highlight}`} onDragOver={handleDragOver} onDragEnter={handleDragEnter} onDragLeave={handleDragLeave} onDrop={handleDrop} onClick={() => {
           if (inputFileRef.current) inputFileRef.current.click();
         }}>
@@ -108,7 +112,7 @@ const Create = () => {
             <span className={styles.captionTitle}>Caption</span>
             <textarea ref={captionRef} className={styles.captionInput} placeholder='Caption' rows="1"></textarea>
           </div>
-          <button className={styles.postBtn} onClick={()=> mutation.mutate({ file: fileInput, caption: captionRef.current.value })}>Post</button>
+          <button className={styles.postBtn} onClick={() => mutation.mutate({ file: fileInput, caption: captionRef.current.value })}>Post</button>
         </div>
       </div>
     </div>

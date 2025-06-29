@@ -6,6 +6,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axiosInstance from "../../api/axiosInstance.js";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const passwordRef = useRef(null);
@@ -57,6 +58,9 @@ const Login = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Login | PicSpace</title>
+            </Helmet>
             {mutation.isPending && (
                 <div className={styles.loading}>
                     <div className={styles.loader}></div>

@@ -17,7 +17,7 @@ import SinglePost from './components/single-post/SinglePost.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <App />, 
     children: [
       {
         path: '/login',

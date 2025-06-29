@@ -101,11 +101,12 @@ const Post = ({ postId, user, caption: captionProp, owner, image, isLiked, like 
             toast.error(error.message);
         }
     })
+    
 
     return (
         <div className={styles.post}>
-            {isPopUp && <PopUp togglePopUp={togglePopUp} postId={postId} setIsPopUp={setIsPopUp} setIsCaptionEdit={setIsCaptionEdit} caption={caption}></PopUp>}
-            {owner._id === currentUser.id && <BsThreeDots className={styles.menuDots} onClick={togglePopUp} />}
+            {isPopUp && <PopUp owner={owner} togglePopUp={togglePopUp} postId={postId} setIsPopUp={setIsPopUp} setIsCaptionEdit={setIsCaptionEdit} caption={caption}></PopUp>}
+            <BsThreeDots className={styles.menuDots} onClick={togglePopUp} />
             <Link to={`/profile/${user.username}`} className={styles.navigateLink}><div className={styles.postTopContainer}>
                 {user.profilePic ?
                     <img src={user.profilePic} alt="profile" className={styles.profileImage} /> :

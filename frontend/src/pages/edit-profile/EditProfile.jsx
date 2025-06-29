@@ -5,6 +5,7 @@ import { FaUserCircle } from "react-icons/fa";
 import toast from "react-hot-toast";
 import axiosInstance from "../../api/axiosInstance";
 import Loader from '../../components/loader/Loader';
+import { Helmet } from "react-helmet";
 
 const EditProfile = () => {
   const queryClient = useQueryClient();
@@ -97,6 +98,9 @@ const EditProfile = () => {
 
   return (
     <div className={styles.editContainer}>
+      <Helmet>
+        <title>Edit Profile - {user.username} | BeSocial</title>
+      </Helmet>
       {imageMutation.isPending && <Loader />}
       <h1 className={styles.heading}>Edit Profile</h1>
       <div className={styles.editBox}>

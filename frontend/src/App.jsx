@@ -7,6 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from './api/axiosInstance.js';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
  
 function App() {
   const navigate = useNavigate();
@@ -38,7 +39,6 @@ function App() {
 
 
   useEffect(() => {
-    document.title = "BeSocial"
     if (!isLoading) {
 
       if (user) {
@@ -60,6 +60,9 @@ function App() {
 
   return (
     <>
+    <Helmet>
+        <title>PicSpace</title>
+      </Helmet>
       <Toaster />{
         !isLoading && <>
           {user && <TopLogo></TopLogo>}

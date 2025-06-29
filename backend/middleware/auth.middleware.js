@@ -16,7 +16,8 @@ const protectedRoute = async (req, res, next) => {
             username: user.username,
             fullname: user.fullname,
             profilePic: user.profilePic,
-            bio: user.profileBio
+            bio: user.profileBio,
+            following: user.following
         }
 
         req.user = userData;

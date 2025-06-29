@@ -46,7 +46,7 @@ exports.getPosts = async (req, res) => {
         const skip = (page - 1) * limit;
 
         const totalPosts = await postModel.countDocuments();
-        const posts = await postModel.find().sort({createdAt: -1}).limit(10).skip(skip).populate("user", "profilePic fullname username");
+        const posts = await postModel.find().sort({createdAt: -1}).limit(10).skip(skip).populate("user", "profilePic fullname username followers");
         
         const hasMore = skip + posts.length < totalPosts;
         res.status(200).json({ message: "post fetched successfully", posts, hasMore });
