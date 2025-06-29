@@ -65,7 +65,7 @@ exports.login = async (req, res) => {
                     fullname: existingUser.fullname,
                     profilePic: existingUser.profilePic,
                     bio: existingUser.profileBio,
-                    following: newUser.following
+                    following: existingUser.following
                 }
                 const token = jwt.sign({ id: existingUser._id }, SECRET_KEY, { expiresIn: '7d' });
                 res.cookie('access_token', token, { maxAge: 7 * 24 * 60 * 60 * 1000, httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'strict' });
