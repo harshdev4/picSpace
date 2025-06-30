@@ -45,7 +45,7 @@ const PopUp = ({ owner, togglePopUp, setIsPopUp, postId, setIsCaptionEdit, capti
     return (
         <div className={styles.menuContainer} id='menuContainer' onClick={handleClose}>
             {!isDeletePopUp && <div className={styles.menuList}>
-                {owner._id !== currentUser.id && <span className={`${styles.menuButton} ${currentUser.following.includes(owner._id) && styles.redColor}`} onClick={(()=> mutate())}>{currentUser.following.includes(owner._id) ? "Unfollow" : "Follow"}</span>}
+                {owner._id !== currentUser.id && <span className={`${styles.menuButton} ${currentUser.following.includes(owner._id) && styles.redColor}`} onClick={(()=> {mutate(); togglePopUp();})}>{currentUser.following.includes(owner._id) ? "Unfollow" : "Follow"}</span>}
                 {owner._id === currentUser.id && <span className={styles.menuButton} onClick={openEditBox}>Edit caption</span>}
                 <span className={styles.menuButton} onClick={()=>handleCopy(postId)}>Copy url</span>
                 {owner._id === currentUser.id && <span className={`${styles.menuButton} ${styles.redColor}`} onClick={toggleDeleteAlert}>Delete post</span>}
