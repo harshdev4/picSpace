@@ -13,7 +13,7 @@ const Followers = () => {
     const getFollowers = async () => {
         try {
             const res = await axiosInstance.get(`/user/${username}/followers/`);
-            return res.data.users;
+            return res.data.users.reverse();
         } catch (error) {
             throw new Error(error.response?.data?.error || "Something went wrong");
         }

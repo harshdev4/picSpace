@@ -60,6 +60,7 @@ export const useFollowMutation = (username, userId) => {
     onSettled: () => {
       queryClient.invalidateQueries(["profile", username]);
       queryClient.invalidateQueries(["user"]);
+      queryClient.invalidateQueries([username, 'followers']);
     },
   });
 };
