@@ -1,9 +1,9 @@
 import React from 'react'
-import styles from './AllUser.module.css';
+import styles from './StoryUsers.module.css';
 import axiosInstance from '../../api/axiosInstance.js';
 import { useQuery } from '@tanstack/react-query';
 import UserIcon from '../user-icon/UserIcon.jsx';
-const AllUser = () => {
+const StoryUsers = () => {
     
     const getUsers = async () => {
         try {
@@ -15,7 +15,7 @@ const AllUser = () => {
     }
 
     const { data, isLoading } = useQuery({
-        queryKey: ['AllUsers'],
+        queryKey: ['StoryUsers'],
         queryFn: getUsers,
         staleTime: 3 * 60 * 1000,
         retry: false,
@@ -34,4 +34,4 @@ const AllUser = () => {
     )
 }
 
-export default AllUser
+export default StoryUsers

@@ -57,6 +57,10 @@
     flex-wrap: wrap;
 }
 
+.link{
+    text-decoration: none;
+    color: inherit;
+}
 
 .profileUsername{
     font-weight: 300;

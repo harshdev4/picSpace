@@ -1,0 +1,76 @@
+.userContainer{
+    width: 45%;
+    margin: 40px auto;
+    display: grid;
+    gap: 20px;
+    box-shadow: 0 0 5px var(--postShadow);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.userBox{
+    display: flex;
+    justify-content: space-between;
+    color: var(--text);
+}
+
+.userProfile{
+    width: 50px;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profileLink{
+    text-decoration: none;
+    color: inherit;
+}
+
+.profileIcon{
+    padding: 8px;
+    background-color: var(--text);
+    color: var(--primaryColor);
+}
+
+.userBoxLeft{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.names{
+    display: grid;
+    align-items: center;
+}
+
+.fullname{
+    align-self: flex-start;
+    color: var(--light);
+    font-size: 0.9rem;
+}
+
+.btn{
+    background-color: var(--secondaryColor);
+    border: 0;
+    padding: 10px 14px;
+    flex-shrink: 0;
+    align-self: center;
+    cursor: pointer;
+    color: var(--text);
+    border-radius: 8px;
+}
+
+.emptyList{
+    text-align: center;
+    font-weight: 400;
+    color: var(--light);
+}
+
+@media (max-width: 599px){
+    .userContainer{
+        width: 100%;
+        box-shadow: unset;
+        padding: 10px 0;
+    }
+}

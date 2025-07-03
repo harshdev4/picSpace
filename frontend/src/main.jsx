@@ -13,6 +13,8 @@ import Register from './pages/auth/Register.jsx'
 import ScrollContextProvider from './context/feedScrollContext.jsx'
 import EditProfile from './pages/edit-profile/EditProfile.jsx'
 import SinglePost from './components/single-post/SinglePost.jsx'
+import Following from './pages/FollowUsersPages/Following.jsx'
+import Followers from './pages/FollowUsersPages/Followers.jsx'
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,14 @@ const router = createBrowserRouter([
       {
         path: '/profile/:username',
         element: <Profile />
+      },
+      {
+        path: '/:username/following',
+        element: <Following/>
+      },
+      {
+        path: '/:username/followers',
+        element: <Followers/>
       }
     ]
   }

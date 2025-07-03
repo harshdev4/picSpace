@@ -90,4 +90,8 @@
     .inputContainer, .seachUserContainer{
         width: 100%;
     }
+
+    .searchContainer{
+        min-height: calc(100vh - 80px);
+    }
 }

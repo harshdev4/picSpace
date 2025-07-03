@@ -113,6 +113,29 @@ exports.getUsers = async (req, res) => {
     }
 }
 
+exports.getFollowing = async (req, res) => {
+    try {
+        const profileUser = req.params.username
+        const allUsers = await userModel.findOne({ username: profileUser }).select('following').populate("following", "profilePic username fullname")
+        res.status(200).json({ message: 'Users fetched successfully', users: allUsers.following });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Something went wrong' });
+    }
+}
+
+exports.getFollowers = async (req, res) => {
+    try {
+        const profileUser = req.params.username
+        const allUsers = await userModel.findOne({ username: profileUser }).select('followers').populate("followers", "profilePic username fullname")
+
+        res.status(200).json({ message: 'Users fetched successfully', users: allUsers.followers });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Something went wrong' });
+    }
+}
+
 exports.searchUser = async (req, res) => {
     const query = req.query.searchQuery;
     try {

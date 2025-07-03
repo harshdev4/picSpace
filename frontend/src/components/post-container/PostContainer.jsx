@@ -7,7 +7,7 @@ import Loader from '../loader/Loader.jsx';
 import { GiEmptyHourglass } from "react-icons/gi";
 import { TbLoader } from "react-icons/tb";
 import { ScrollContext } from '../../context/feedScrollContext.jsx';
-import AllUser from '../all-user/AllUser.jsx';
+import StoryUsers from '../Story-users/StoryUsers.jsx';
 
 const PostContainer = () => {
   const container = useRef(null);
@@ -60,7 +60,7 @@ const PostContainer = () => {
 
   return (
     <div ref={container} className={styles.postMainContainer}>
-      <AllUser/>
+      <StoryUsers/>
       {isLoading && <Loader />}
 
       {data?.pages?.map((page, index) => (

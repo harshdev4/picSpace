@@ -55,7 +55,7 @@ const Profile = () => {
     onSuccess: () => {
       toast.success("Logged out");
       queryClient.removeQueries({ queryKey: ['user'], exact: true });
-      queryClient.removeQueries({ queryKey: ['AllUsers'], exact: true });
+      queryClient.removeQueries({ queryKey: ['StoryUsers'], exact: true });
       queryClient.removeQueries({ queryKey: ['Posts'], exact: true });
       queryClient.removeQueries({
         predicate: query =>
@@ -104,8 +104,8 @@ const {mutate: follow} = useFollowMutation(username, getUser.data?._id)
 
                 <div className={`${styles.infoSection} ${styles.statsSection}`}>
                   <h2 className={styles.postCount}>{user?.post.length} <span className={styles.followPostSpan}> post </span></h2>
-                  <h2 className={styles.followerCount}>{getUser.data?.followers.length || 0}{" "} <span className={styles.followPostSpan}> followers </span></h2>
-                  <h2 className={styles.followingCount}>{getUser.data?.following.length || 0}{" "} <span className={styles.followPostSpan}> following </span></h2>
+                  <Link to={`/${user.username}/followers`} className={styles.link}><h2 className={styles.followerCount}>{getUser.data?.followers.length || 0}{" "} <span className={styles.followPostSpan}> followers </span></h2></Link>
+                  <Link to={`/${user.username}/following`} className={styles.link}><h2 className={styles.followingCount}>{getUser.data?.following.length || 0}{" "} <span className={styles.followPostSpan}> following </span></h2></Link>
                 </div>
 
                 <div className={`${styles.infoSection} ${styles.fullnameSection}`}>
@@ -127,14 +127,14 @@ const {mutate: follow} = useFollowMutation(username, getUser.data?._id)
               {user.post.length}
               <span className={styles.followPostSpan}> post </span>
             </h2>
-            <h2 className={styles.followerCount}>
+            <Link to={`/${user.username}/followers`} className={styles.link}><h2 className={styles.followerCount}>
               {getUser.data?.followers.length || 0}{" "}
               <span className={styles.followPostSpan}> followers </span>
-            </h2>
-            <h2 className={styles.followingCount}>
+            </h2></Link>
+            <Link to={`/${user.username}/following`} className={styles.link}><h2 className={styles.followingCount}>
               {getUser.data?.following.length || 0}{" "}
               <span className={styles.followPostSpan}> following </span>
-            </h2>
+            </h2></Link>
           </div>
           <ProfileTabs tab={tab} setTab={setTab} />
           <ProfileTabPosts tab={tab} posts={tab === 'Posts' ? user.post : user.likedPost} />

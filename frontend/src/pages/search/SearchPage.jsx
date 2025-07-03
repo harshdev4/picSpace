@@ -21,7 +21,7 @@ const SearchPage = () => {
     queryKey: ['search', searchQuery],
     queryFn: () => searchUser(searchQuery),
     gcTime: 0,
-    enabled: !!searchQuery
+    enabled: !!searchQuery 
   })
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const SearchPage = () => {
       </Helmet>
       <div className={styles.inputContainer}>
         <span className={`material-symbols-rounded ${styles.searchIcon}`}>search</span>
-        <input type="text" name="search" value={searchQuery} className={styles.searchBar} placeholder='Search' autocomplete="off" autoFocus={true} onChange={(e) => setSearchQuery(e.target.value)} />
+        <input type="text" name="search" value={searchQuery} className={styles.searchBar} placeholder='Search' autoComplete="off" autoFocus={true} onChange={(e) => setSearchQuery(e.target.value)} />
       </div>
       <div style={{ display: users && users.length > 0 ? 'block' : 'none' }} className={styles.seachUserContainer}> {users &&
         users.map((user, index) => (
