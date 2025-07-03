@@ -39,7 +39,7 @@ const Following = () => {
                     <>
                         <div className={styles.inputContainer}>
                             <span className={`material-symbols-rounded ${styles.searchIcon}`}>search</span>
-                            <input type="text" name="search" value={searchQuery} className={styles.searchBar} placeholder='Search' autoComplete="off" autoFocus={true} onChange={(e) => setSearchQuery(e.target.value)} />
+                            <input type="text" name="search" value={searchQuery} className={styles.searchBar} placeholder='Search' autoComplete="off" onChange={(e) => setSearchQuery(e.target.value)} />
                         </div>
                         <FollowUsers users={filteredUsers} follow="following" username={username} />
                     </>
